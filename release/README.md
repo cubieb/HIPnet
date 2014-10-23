@@ -24,8 +24,8 @@ Warnings
 * Please see the HIPnet.license file in this repository.
 
 
-About CableLabs verification envirionment
------------------------------------------
+About CableLabs verification environment
+----------------------------------------
 * Cisco CNR, CMTS, Cable Modem.
 * CNR provisioning CM, CPE and Prefix Delegation pools. 
 * CMTS configured for Primary (CM) and Secondary (CPE) IPv4 subnets.
