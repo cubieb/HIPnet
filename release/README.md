@@ -144,40 +144,39 @@ These instructions assume operational familiarity with the ISC DHCP Client and S
 
 OpenWRT configuration, included and excluded packages
 -----------------------------------------------------
-* CONFIG PACKAGE odhcp6c is not set
-* CONFIG PACKAGE odhcpd is not set
-* CONFIG PACKAGE dnsmasq is not set
-* CONFIG PACKAGE dnsmasq-dhcpv6 is not set
-* CONFIG BUSYBOX DEFAULT UDHCPC6 is not set
-* CONFIG BUSYBOX DEFAULT UDHCPD is not set
-* CONFIG BUSYBOX DEFAULT FEATURE UDHCPC ARPING is not set
-
-* CONFIG BUSYBOX DEFAULT UDHCPC=y
-* CONFIG TARGET ar71xx generic WNDR3700=y
-* CONFIG TARGET BOARD="ar71xx"
-* CONFIG TARGET ROOTFS SQUASHFS=y
-* CONFIG PACKAGE busybox=y
-* CONFIG PACKAGE firewall=y
-* CONFIG PACKAGE fstools=y
-* CONFIG PACKAGE kmod-ipv6=y
-* CONFIG PACKAGE microperl=y
-* CONFIG PACKAGE luci-mod-admin-full=y
-* CONFIG PACKAGE ip6tables=y
-* CONFIG PACKAGE iptables=y
-* CONFIG PACKAGE isc-dhcp-client-ipv4=y
-* CONFIG PACKAGE isc-dhcp-client-ipv6=y
-* CONFIG PACKAGE isc-dhcp-omshell-ipv4=y
-* CONFIG PACKAGE isc-dhcp-omshell-ipv6=y
-* CONFIG PACKAGE isc-dhcp-relay-ipv4=y
-* CONFIG PACKAGE isc-dhcp-relay-ipv6=y
-* CONFIG PACKAGE isc-dhcp-server-ipv4=y
-* CONFIG PACKAGE isc-dhcp-server-ipv6=y
-* CONFIG PACKAGE iputils-ping=y
-* CONFIG PACKAGE iputils-ping6=y
-* CONFIG PACKAGE radvd=y
-* CONFIG IB=y
-* CONFIG IPV6=y
-* CONFIG SHADOW PASSWORDS=y
+* CONFIG PACKAGE odhcp6c is not set.
+* CONFIG PACKAGE odhcpd is not set.
+* CONFIG PACKAGE dnsmasq is not set.
+* CONFIG PACKAGE dnsmasq-dhcpv6 is not set.
+* CONFIG BUSYBOX DEFAULT UDHCPC6 is not set.
+* CONFIG BUSYBOX DEFAULT UDHCPD is not set.
+* CONFIG BUSYBOX DEFAULT FEATURE UDHCPC ARPING is not set (Note, this should be set).
+* CONFIG BUSYBOX DEFAULT UDHCPC=y.
+* CONFIG TARGET ar71xx generic WNDR3700=y.
+* CONFIG TARGET BOARD="ar71xx".
+* CONFIG TARGET ROOTFS SQUASHFS=y.
+* CONFIG PACKAGE busybox=y.
+* CONFIG PACKAGE firewall=y.
+* CONFIG PACKAGE fstools=y.
+* CONFIG PACKAGE kmod-ipv6=y.
+* CONFIG PACKAGE microperl=y.
+* CONFIG PACKAGE luci-mod-admin-full=y.
+* CONFIG PACKAGE ip6tables=y.
+* CONFIG PACKAGE iptables=y.
+* CONFIG PACKAGE isc-dhcp-client-ipv4=y.
+* CONFIG PACKAGE isc-dhcp-client-ipv6=y.
+* CONFIG PACKAGE isc-dhcp-omshell-ipv4=y.
+* CONFIG PACKAGE isc-dhcp-omshell-ipv6=y.
+* CONFIG PACKAGE isc-dhcp-relay-ipv4=y.
+* CONFIG PACKAGE isc-dhcp-relay-ipv6=y.
+* CONFIG PACKAGE isc-dhcp-server-ipv4=y.
+* CONFIG PACKAGE isc-dhcp-server-ipv6=y.
+* CONFIG PACKAGE iputils-ping=y.
+* CONFIG PACKAGE iputils-ping6=y.
+* CONFIG PACKAGE radvd=y.
+* CONFIG IB=y.
+* CONFIG IPV6=y.
+* CONFIG SHADOW PASSWORDS=y.
 
 
 The 'files' directory
