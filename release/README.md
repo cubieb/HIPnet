@@ -39,7 +39,9 @@ This repository contains modified ISC DHCP IPv6 Client and Server 'c' code for t
 This documentation assumes operational familiarity with the ISC DHCP Client and Server, with OpenWRT core, packages, and image generation, and with flashing the NETGEAR 3800.
 
 The provided implementation modifies the IPv6 DHCP client and server to sub-delegate prefixes, and to provision IPv6 and IPv4 routing without the use of a routing protocol.  Please see:
+
 [http://tools.ietf.org/html/draft-grundemann-homenet-hipnet-00] (http://tools.ietf.org/html/draft-grundemann-homenet-hipnet-00)
+
 [http://www.cablelabs.com/the-future-of-home-networking-putting-the-hip-in-hipnet] (http://www.cablelabs.com/the-future-of-home-networking-putting-the-hip-in-hipnet)
 
 This repository also contains a required OpenWRT 'files' directory for the NETGEAR 3800.
@@ -100,6 +102,7 @@ Provided .c files
 * inet.c
 * dhc6.c.X (not integrated)
 
+
 - dhclient.c  (isc-dhcp-ipv6/dhcp-4.2.4/client/dhclient.c)
 Generates prefix sub-delegation.  Note this code implements prefixes as arrays of characters that illustrate the prefix sub-delegation algorithm.  Generating prefixes would be better implemented with bit masking.  This code adds the v6 and v4 upstream routes.  This code will not support a 'wide' configuration or more than one connected downstream router.
 
@@ -145,18 +148,14 @@ OpenWRT configuration, included and excluded packages
 * CONFIG PACKAGE odhcpd is not set
 * CONFIG PACKAGE dnsmasq is not set
 * CONFIG PACKAGE dnsmasq-dhcpv6 is not set
-
 * CONFIG BUSYBOX DEFAULT UDHCPC6 is not set
 * CONFIG BUSYBOX DEFAULT UDHCPD is not set
 * CONFIG BUSYBOX DEFAULT FEATURE UDHCPC ARPING is not set
-* CONFIG BUSYBOX DEFAULT UDHCPC=y
 
+* CONFIG BUSYBOX DEFAULT UDHCPC=y
 * CONFIG TARGET ar71xx generic WNDR3700=y
 * CONFIG TARGET BOARD="ar71xx"
 * CONFIG TARGET ROOTFS SQUASHFS=y
-* CONFIG SHADOW PASSWORDS=y
-* CONFIG IB=y
-* CONFIG IPV6=y
 * CONFIG PACKAGE busybox=y
 * CONFIG PACKAGE firewall=y
 * CONFIG PACKAGE fstools=y
@@ -176,6 +175,9 @@ OpenWRT configuration, included and excluded packages
 * CONFIG PACKAGE iputils-ping=y
 * CONFIG PACKAGE iputils-ping6=y
 * CONFIG PACKAGE radvd=y
+* CONFIG IB=y
+* CONFIG IPV6=y
+* CONFIG SHADOW PASSWORDS=y
 
 
 The 'files' directory
