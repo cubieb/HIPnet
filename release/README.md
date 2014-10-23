@@ -54,9 +54,9 @@ About this proof of concept implementation and code
 The purpose of the code provided is to demonstrate HIPnet proof of concept.  This code is not presented or recommended as architecture, methodology, or best practice.  A good coding methodology for prefix sub-delegation is bit masking.  The provided code uses character array manipulation, illustrating the prefix sub-delegation algorithm.
 
 ####Known
-* Count of router's VLANs
-* Received prefix delegation
-* HIPnet requirements
+* Count of router's VLANs.
+* Received prefix delegation.
+* HIPnet requirements.
 
 1. Set variables for known values VLAN count, received IANA and IAPD.
 2. Determine the prefix sub-delegation configuration mode: depth or width.
