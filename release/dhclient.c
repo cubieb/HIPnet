@@ -2929,8 +2929,8 @@ write_client6_lease(struct client_state *client, struct dhc6_lease *lease,
     log_info("HIPnet, system(dhclient stop) stat: %d", stat);
 
     // arp doesn't appear to be starting
-    // TODO, add what's missing in OpentWRT configuration for arp to start
-    system("ifconfig eth1 arp");
+    // TODO, add to OpenWRT configuration BUSYBOX DEFAULT FEATURE UDHCPC ARPING
+
     system("ifconfig br-lan arp");
 
     // radvd doesn't appear to always start
