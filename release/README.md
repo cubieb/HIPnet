@@ -24,8 +24,8 @@ Warnings
 * Please see the HIPnet.license file in this repository.
 
 
-About CableLabs verification envirionment
------------------------------------------
+About CableLabs verification environment
+----------------------------------------
 * Cisco CNR, CMTS, Cable Modem.
 * CNR provisioning CM, CPE and Prefix Delegation pools. 
 * CMTS configured for Primary (CM) and Secondary (CPE) IPv4 subnets.
@@ -127,6 +127,7 @@ Software versions used in development
 About the NETGEAR WNDR 3800
 ---------------------------
 The NETGEAR 3800 has one dedicated WAN RJ-11 and is a 'directional' router.  UP Detection is not applicable.  By default, the 3800 LAN IPv4 address is 192.168.1.1.  IR LAN v4 and v6 IPs can be determined from connected CPE addresses.  For the provided image and images produced from this code, connect to router LAN via ssh.
+
         root / cablelabs
 
 
