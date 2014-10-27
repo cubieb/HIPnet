@@ -3,19 +3,21 @@ CableLabs HIPnet Proof of Concept OpenWRT; ISC DHCP, and the NETGEAR WNDR 3800
 
 October 15, 2014
 
-Michael Kloberdans, CableLabs Lead Architect/Home Networking 
+Michael Kloberdans, CableLabs Lead Architect/Home Networking
 m.kloberdans@cablelabs.com
 
-Brian Otte, CableLabs Software Engineer b.otte@cablelabs.com
+Brian Otte, CableLabs Software Engineer 
+b.otte@cablelabs.com
 
-Aaron Quinto, CableLabs Engineer, Tiger Team a.quinto@cablelabs.com
+Aaron Quinto, CableLabs Engineer, Tiger Team 
+a.quinto@cablelabs.com
 
 
 Warnings
 --------
 * The provided image and code are not suitable for use in a home router.
 * This code release is proof of concept only.
-* This code demonstrates a subset of CableLabs draft "A Near Term Solution for Home IP Networking (HIPnet);" it does not provide a complete implementation of HIPnet.
+* This code demonstrates a subset of CableLabs draft "A Near Term Solution for Home IP Networking (HIPnet)" - it does not provide a complete implementation of HIPnet.
 * This code supports connecting only one downstream HIPnet router.  If more than one router is connected, then connect only one router and reboot.
 * This version of HIPnet supports only given prefix sizes smaller than a /51.
 * The provided image and code are not tested.  The code was verified for correctness in a three deep (CER, IR1, IR2) configuration given ISP delegated prefixes /52, /56, and /60.
@@ -27,9 +29,9 @@ Warnings
 About CableLabs verification environment
 ----------------------------------------
 * Cisco CNR, CMTS, Cable Modem.
-* CNR provisioning CM, CPE and Prefix Delegation pools. 
+* CNR provisioning CM, CPE and Prefix Delegation pools.
 * CMTS configured for Primary (CM) and Secondary (CPE) IPv4 subnets.
-* The CMTS processes CPE IPv6 router advertisements.  For a non-CMTS environment, a router that processes IPv6 router advertisements is required. 
+* The CMTS processes CPE IPv6 router advertisements.  For a non-CMTS environment, a router that processes IPv6 router advertisements is required.
 
 
 About this Repository
