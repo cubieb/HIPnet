@@ -16,7 +16,7 @@ Warnings
 * The provided image and code are not suitable for use in a home router.
 * This code release is proof of concept only.
 * This code demonstrates a subset of CableLabs draft "A Near Term Solution
-for Home IP Networking (HIPnet);" it does not provide a complete implementation of HIPnet.
+for Home IP Networking (HIPnet)" - it does not provide a complete implementation of HIPnet.
 * This code supports connecting only one downstream HIPnet router.  
 If more than one router is connected, then connect only one router and reboot.
 * This version of HIPnet supports only given prefix sizes smaller than a /51.
