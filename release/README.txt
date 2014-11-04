@@ -156,35 +156,40 @@ with OpenWRT core, packages, and image generation, and with flashing the NETGEAR
 
 OpenWRT configuration, included and excluded packages
 -----------------------------------------------------
-CONFIG_PACKAGE_odhcp6c is not set
-CONFIG_PACKAGE_odhcpd is not set
-CONFIG_PACKAGE_dnsmasq is not set
-CONFIG_PACKAGE_dnsmasq-dhcpv6 is not set
-CONFIG_TARGET_ar71xx_generic_WNDR3700=y
-CONFIG_TARGET_BOARD="ar71xx"
-CONFIG_TARGET_ROOTFS_SQUASHFS=y
-CONFIG_SHADOW_PASSWORDS=y
-CONFIG_IB=y
-CONFIG_IPV6=y
-CONFIG_PACKAGE_busybox=y
-CONFIG_PACKAGE_firewall=y
-CONFIG_PACKAGE_fstools=y
-CONFIG_PACKAGE_kmod-ipv6=y
-CONFIG_PACKAGE_microperl=y
-CONFIG_PACKAGE_luci-mod-admin-full=y
-CONFIG_PACKAGE_ip6tables=y
-CONFIG_PACKAGE_iptables=y
-CONFIG_PACKAGE_isc-dhcp-client-ipv4=y
-CONFIG_PACKAGE_isc-dhcp-client-ipv6=y
-CONFIG_PACKAGE_isc-dhcp-omshell-ipv4=y
-CONFIG_PACKAGE_isc-dhcp-omshell-ipv6=y
-CONFIG_PACKAGE_isc-dhcp-relay-ipv4=y
-CONFIG_PACKAGE_isc-dhcp-relay-ipv6=y
-CONFIG_PACKAGE_isc-dhcp-server-ipv4=y
-CONFIG_PACKAGE_isc-dhcp-server-ipv6=y
-CONFIG_PACKAGE_iputils-ping=y
-CONFIG_PACKAGE_iputils-ping6=y
-CONFIG_PACKAGE_radvd=y
+CONFIG PACKAGE odhcp6c is not set.
+CONFIG PACKAGE odhcpd is not set.
+CONFIG PACKAGE dnsmasq is not set.
+CONFIG PACKAGE dnsmasq-dhcpv6 is not set.
+CONFIG BUSYBOX DEFAULT UDHCPC6 is not set.
+CONFIG BUSYBOX DEFAULT UDHCPD is not set.
+CONFIG BUSYBOX DEFAULT FEATURE UDHCPC ARPING is not set (Note, this should be set).
+CONFIG BUSYBOX DEFAULT UDHCPC=y (Note, see dhclient.c code comments; dhclient.c stops the isc-dhcp-client-ipv4 process).
+CONFIG TARGET ar71xx generic WNDR3700=y.
+CONFIG TARGET BOARD="ar71xx".
+CONFIG TARGET ROOTFS SQUASHFS=y.
+CONFIG PACKAGE busybox=y.
+CONFIG PACKAGE firewall=y.
+CONFIG PACKAGE fstools=y.
+CONFIG PACKAGE kmod-ipv6=y.
+CONFIG PACKAGE microperl=y.
+CONFIG PACKAGE luci-mod-admin-full=y.
+CONFIG PACKAGE ip6tables=y.
+CONFIG PACKAGE iptables=y.
+CONFIG PACKAGE isc-dhcp-client-ipv4=y.
+CONFIG PACKAGE isc-dhcp-client-ipv6=y.
+CONFIG PACKAGE isc-dhcp-omshell-ipv4=y.
+CONFIG PACKAGE isc-dhcp-omshell-ipv6=y.
+CONFIG PACKAGE isc-dhcp-relay-ipv4=y.
+CONFIG PACKAGE isc-dhcp-relay-ipv6=y.
+CONFIG PACKAGE isc-dhcp-server-ipv4=y.
+CONFIG PACKAGE isc-dhcp-server-ipv6=y.
+CONFIG PACKAGE iputils-ping=y.
+CONFIG PACKAGE iputils-ping6=y.
+CONFIG PACKAGE radvd=y.
+CONFIG IB=y.
+CONFIG IPV6=y.
+CONFIG SHADOW PASSWORDS=y.
+
 
 
 The 'files' directory
