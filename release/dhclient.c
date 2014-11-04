@@ -2922,6 +2922,12 @@ write_client6_lease(struct client_state *client, struct dhc6_lease *lease,
     // TODO, replace system() calls where possible
     // TODO, use log_debug 
 
+    
+    // TODO, Determine the correct IPv4 DHCP client.  This is high priority.
+    // Both IPv4 DHCP clients UDHCPC and isc-dhcp-client-ipv4 are installed,
+    // then the isc-dhcp-client-ipv4 process is stopped here.
+    // Question, why does the manual IPv4 provisioning below override UDHCPC?
+
     // If this router is an IR (not CER), then do not provision its v4 client
     // from up router dhcpd server; IR v4 client is provisioned below.
     // TODO, remove v4 dhclient from OpenWRT configuration
@@ -2929,8 +2935,8 @@ write_client6_lease(struct client_state *client, struct dhc6_lease *lease,
     log_info("HIPnet, system(dhclient stop) stat: %d", stat);
 
     // arp doesn't appear to be starting
-    // TODO, add what's missing in OpentWRT configuration for arp to start
-    system("ifconfig eth1 arp");
+    // TODO, add to OpenWRT configuration BUSYBOX DEFAULT FEATURE UDHCPC ARPING
+
     system("ifconfig br-lan arp");
 
     // radvd doesn't appear to always start
