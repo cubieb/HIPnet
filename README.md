@@ -153,8 +153,8 @@ OpenWRT configuration, included and excluded packages
 * CONFIG PACKAGE dnsmasq-dhcpv6 is not set.
 * CONFIG BUSYBOX DEFAULT UDHCPC6 is not set.
 * CONFIG BUSYBOX DEFAULT UDHCPD is not set.
-* CONFIG BUSYBOX DEFAULT FEATURE UDHCPC ARPING is not set (Note, this should be set).
-* CONFIG BUSYBOX DEFAULT UDHCPC=y.
+* CONFIG BUSYBOX DEFAULT FEATURE UDHCPC ARPING is not set  (Note, this should be set).
+* CONFIG BUSYBOX DEFAULT UDHCPC=y.  (Note, dhclient.c stops isc-dhcp-client-ipv4 process, see code comments).
 * CONFIG TARGET ar71xx generic WNDR3700=y.
 * CONFIG TARGET BOARD="ar71xx".
 * CONFIG TARGET ROOTFS SQUASHFS=y.
