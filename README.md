@@ -3,12 +3,14 @@ CableLabs HIPnet Proof of Concept OpenWRT; ISC DHCP, and the NETGEAR WNDR 3800
 
 October 15, 2014
 
-Michael Kloberdans, CableLabs Lead Architect/Home Networking 
+Michael Kloberdans, CableLabs Lead Architect/Home Networking
 m.kloberdans@cablelabs.com
 
-Brian Otte, CableLabs Software Engineer b.otte@cablelabs.com
+Brian Otte, CableLabs Software Engineer 
+b.otte@cablelabs.com
 
-Aaron Quinto, CableLabs Engineer, Tiger Team a.quinto@cablelabs.com
+Aaron Quinto, CableLabs Engineer, Tiger Team 
+a.quinto@cablelabs.com
 
 
 Warnings
@@ -18,10 +20,18 @@ Warnings
 * This code demonstrates a subset of CableLabs draft "A Near Term Solution for Home IP Networking (HIPnet)" - it does not provide a complete implementation of HIPnet.
 * This code supports connecting only one downstream HIPnet router.  If more than one router is connected, then connect only one router and reboot.
 * This version of HIPnet supports only given prefix sizes smaller than a /51.
-* The provided image and code are not tested.  The code was verified for correctness in a three deep (CER, IR1, IR2) configuration given ISP delegated prefixes /52 and /56.
+* The provided image and code are not tested.  The code was verified for correctness in a three deep (CER, IR1, IR2) configuration given ISP delegated prefixes /52, /56, and /60.
 * Image, code modifications, and router configuration are for the NETGEAR WNDR 3800 only.
 * This code is not presented or recommended as architecture, methodology, or best practice.
 * Please see the HIPnet.license file in this repository.
+
+
+About CableLabs verification environment
+----------------------------------------
+* Cisco CNR, CMTS, Cable Modem.
+* CNR provisioning CM, CPE and Prefix Delegation pools.
+* CMTS configured for Primary (CM) and Secondary (CPE) IPv4 subnets.
+* The CMTS processes CPE IPv6 router advertisements.  For a non-CMTS environment, a router that processes IPv6 router advertisements is required.
 
 
 About this Repository
@@ -31,7 +41,9 @@ This repository contains modified ISC DHCP IPv6 Client and Server 'c' code for t
 This documentation assumes operational familiarity with the ISC DHCP Client and Server, with OpenWRT core, packages, and image generation, and with flashing the NETGEAR 3800.
 
 The provided implementation modifies the IPv6 DHCP client and server to sub-delegate prefixes, and to provision IPv6 and IPv4 routing without the use of a routing protocol.  Please see:
+
 [http://tools.ietf.org/html/draft-grundemann-homenet-hipnet-00] (http://tools.ietf.org/html/draft-grundemann-homenet-hipnet-00)
+
 [http://www.cablelabs.com/the-future-of-home-networking-putting-the-hip-in-hipnet] (http://www.cablelabs.com/the-future-of-home-networking-putting-the-hip-in-hipnet)
 
 This repository also contains a required OpenWRT 'files' directory for the NETGEAR 3800.
@@ -44,21 +56,22 @@ About this proof of concept implementation and code
 The purpose of the code provided is to demonstrate HIPnet proof of concept.  This code is not presented or recommended as architecture, methodology, or best practice.  A good coding methodology for prefix sub-delegation is bit masking.  The provided code uses character array manipulation, illustrating the prefix sub-delegation algorithm.
 
 ####Known
-* Count of router's VLANs
-* Received prefix delegation
-* HIPnet requirements
-* Set variables for known values VLAN count, received IANA and IAPD.
-* Determine the prefix sub-delegation configuration mode: depth or width.
-* Determine the bit boundary to use for determining the number of subnets.
-* Determine the number of subnets.
-* Determine the number of subnet bits to use for determining the number of networks.
-* Determine the number of networks.
-* Determine the number of /64 networks in a sub-delegated prefix.
-* Determine the size of the delegated prefixes.
-* Determine the sub-delegated prefix at the top of the address pool.
-* Determine sub-delegated prefix range.
-* Provision v6.
-* Extend prefix sub-delegation to additional configurations (CER, firewall, IPv4.).
+* Count of router's VLANs.
+* Received prefix delegation.
+* HIPnet requirements.
+
+1. Set variables for known values VLAN count, received IANA and IAPD.
+2. Determine the prefix sub-delegation configuration mode: depth or width.
+3. Determine the bit boundary to use for determining the number of subnets.
+4. Determine the number of subnets.
+5. Determine the number of subnet bits to use for determining the number of networks.
+6. Determine the number of networks.
+7. Determine the number of /64 networks in a sub-delegated prefix.
+8. Determine the size of the delegated prefixes.
+9. Determine the sub-delegated prefix at the top of the address pool.
+10. Determine sub-delegated prefix range.
+11. Provision v6.
+12. Extend prefix sub-delegation to additional configurations (CER, firewall, IPv4.).
 
 
 HIPnet functionality demonstrated through ISC DHCP code modifications
@@ -91,6 +104,7 @@ Provided .c files
 * inet.c
 * dhc6.c.X (not integrated)
 
+
 - dhclient.c  (isc-dhcp-ipv6/dhcp-4.2.4/client/dhclient.c)
 Generates prefix sub-delegation.  Note this code implements prefixes as arrays of characters that illustrate the prefix sub-delegation algorithm.  Generating prefixes would be better implemented with bit masking.  This code adds the v6 and v4 upstream routes.  This code will not support a 'wide' configuration or more than one connected downstream router.
 
@@ -98,7 +112,7 @@ Generates prefix sub-delegation.  Note this code implements prefixes as arrays o
 Generates the specific v6 and v4 downstream routes (route injection) to the downstream router LAN.
 
 - inet.c  (isc-dhcp-ipv6/dhcp-4.2.4/common/inet.c)
-inet.c contains a function, is_cidr_mask_valid(), that is modified such that the DHCP Server runs with the HIPnet generated 'prefix6' declaration.
+inet.c contains a function, is cidr mask valid(), that is modified such that the DHCP Server runs with the HIPnet generated 'prefix6' declaration.
 
 - dhc6.c.X (not integrated)
 Do not build into images until this file has been reviewed and corrected.  dhc6.c.X is provided as a possible path to a solution to compare lease options and return a value indicating which interface is more 'up.'
@@ -115,6 +129,7 @@ Software versions used in development
 About the NETGEAR WNDR 3800
 ---------------------------
 The NETGEAR 3800 has one dedicated WAN RJ-11 and is a 'directional' router.  UP Detection is not applicable.  By default, the 3800 LAN IPv4 address is 192.168.1.1.  IR LAN v4 and v6 IPs can be determined from connected CPE addresses.  For the provided image and images produced from this code, connect to router LAN via ssh.
+
         root / cablelabs
 
 
@@ -132,63 +147,39 @@ These instructions assume operational familiarity with the ISC DHCP Client and S
 
 OpenWRT configuration, included and excluded packages
 -----------------------------------------------------
-CONFIG_PACKAGE_odhcp6c is not set
-
-CONFIG_PACKAGE_odhcpd is not set
-
-CONFIG_PACKAGE_dnsmasq is not set
-
-CONFIG_PACKAGE_dnsmasq-dhcpv6 is not set
-
-CONFIG_TARGET_ar71xx_generic_WNDR3700=y
-
-CONFIG_TARGET_BOARD="ar71xx"
-
-CONFIG_TARGET_ROOTFS_SQUASHFS=y
-
-CONFIG_SHADOW_PASSWORDS=y
-
-CONFIG_IB=y
-
-CONFIG_IPV6=y
-
-CONFIG_PACKAGE_busybox=y
-
-CONFIG_PACKAGE_firewall=y
-
-CONFIG_PACKAGE_fstools=y
-
-CONFIG_PACKAGE_kmod-ipv6=y
-
-CONFIG_PACKAGE_microperl=y
-
-CONFIG_PACKAGE_luci-mod-admin-full=y
-
-CONFIG_PACKAGE_ip6tables=y
-
-CONFIG_PACKAGE_iptables=y
-
-CONFIG_PACKAGE_isc-dhcp-client-ipv4=y
-
-CONFIG_PACKAGE_isc-dhcp-client-ipv6=y
-
-CONFIG_PACKAGE_isc-dhcp-omshell-ipv4=y
-
-CONFIG_PACKAGE_isc-dhcp-omshell-ipv6=y
-
-CONFIG_PACKAGE_isc-dhcp-relay-ipv4=y
-
-CONFIG_PACKAGE_isc-dhcp-relay-ipv6=y
-
-CONFIG_PACKAGE_isc-dhcp-server-ipv4=y
-
-CONFIG_PACKAGE_isc-dhcp-server-ipv6=y
-
-CONFIG_PACKAGE_iputils-ping=y
-
-CONFIG_PACKAGE_iputils-ping6=y
-
-CONFIG_PACKAGE_radvd=y
+* CONFIG PACKAGE odhcp6c is not set.
+* CONFIG PACKAGE odhcpd is not set.
+* CONFIG PACKAGE dnsmasq is not set.
+* CONFIG PACKAGE dnsmasq-dhcpv6 is not set.
+* CONFIG BUSYBOX DEFAULT UDHCPC6 is not set.
+* CONFIG BUSYBOX DEFAULT UDHCPD is not set.
+* CONFIG BUSYBOX DEFAULT FEATURE UDHCPC ARPING is not set  (Note, this should be set).
+* CONFIG BUSYBOX DEFAULT UDHCPC=y.  (Note, see dhclient.c code comments; dhclient.c stops the isc-dhcp-client-ipv4 process).
+* CONFIG TARGET ar71xx generic WNDR3700=y.
+* CONFIG TARGET BOARD="ar71xx".
+* CONFIG TARGET ROOTFS SQUASHFS=y.
+* CONFIG PACKAGE busybox=y.
+* CONFIG PACKAGE firewall=y.
+* CONFIG PACKAGE fstools=y.
+* CONFIG PACKAGE kmod-ipv6=y.
+* CONFIG PACKAGE microperl=y.
+* CONFIG PACKAGE luci-mod-admin-full=y.
+* CONFIG PACKAGE ip6tables=y.
+* CONFIG PACKAGE iptables=y.
+* CONFIG PACKAGE isc-dhcp-client-ipv4=y.
+* CONFIG PACKAGE isc-dhcp-client-ipv6=y.
+* CONFIG PACKAGE isc-dhcp-omshell-ipv4=y.
+* CONFIG PACKAGE isc-dhcp-omshell-ipv6=y.
+* CONFIG PACKAGE isc-dhcp-relay-ipv4=y.
+* CONFIG PACKAGE isc-dhcp-relay-ipv6=y.
+* CONFIG PACKAGE isc-dhcp-server-ipv4=y.
+* CONFIG PACKAGE isc-dhcp-server-ipv6=y.
+* CONFIG PACKAGE iputils-ping=y.
+* CONFIG PACKAGE iputils-ping6=y.
+* CONFIG PACKAGE radvd=y.
+* CONFIG IB=y.
+* CONFIG IPV6=y.
+* CONFIG SHADOW PASSWORDS=y.
 
 
 The 'files' directory
